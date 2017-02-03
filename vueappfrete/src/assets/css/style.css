@@ -1,0 +1,49 @@
+.obs-texto{
+    height: 22px;
+    background: #F9F9F9;
+    padding: 3px 0 3px 5px;
+}
+
+.header {
+    height: 119px;
+}
+
+.topo{
+    padding-top: 23px;
+}
+
+.topo-principal {
+    height: 105px;
+}
+
+.filtros{
+    background: #E9E9E9;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.frete{
+    height: 100px;
+    padding: 10px 0;
+    font-size: 12px;
+    color: #383838;
+}
+
+.dados-frete{
+    height: 50px;
+    overflow: hidden;
+}
+
+.logo-emp{
+    height: 50px;
+}
+
+span {
+    height: 25px;
+    padding: 5px 0 5px 5px;
+    overflow: hidden;
+    float: left;
+    width: 100%;
+}

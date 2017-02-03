@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css?v=1e">
+        <script href="bootstrap/js/bootstrap.min.js"></script>
+        <!-- vue -->
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div class="container header">
+            <div class="row topo">
+                <div class="col-lg-4 logo">
+                    <img src="images/logo-8anos.svg">
+                </div>
+                <div class="col-lg-8"></div>
+            </div>
+        </div>
+        <div class="container topo-principal">
+            <div class="row">
+                <div class="col-lg-6 botoes">
+                    <button class="btn btn-primary">Fretes</button>
+                    <button class="btn btn-danger">Empresas</button>
+                    <button class="btn btn-success">Veiculos</button>
+                </div>
+                <div class="col-lg-6 login">
+                    <input type="" name="" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="container conteudo">
+            <div class="row">
+                <div class="col-lg-3 filtros">
+
+                </div>
+                <div class="col-lg-9 fretes" id="listafretes">
+                    <h5>Fretes</h5>
+                    <div class="row">
+
+                    </div>
+
+                    <frete-item v-for="item in listaDeFretes" v-bind:frete="item"></frete-item>
+
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+
+            Vue.component('frete-item', {
+
+                props: ['frete'],
+
+                template: '<div class="row frete">'+
+                            '<div class="col-lg-10 dados-frete">'+
+                                '<div class="row">'+
+                                    '<div class="col-lg-4">'+
+                                        '<span>'+
+                                            'Origem: <strong>{{ frete.origem }}</strong>'+
+                                        '</span>'+
+                                        '<span>'+
+                                            'Destino: <strong>{{frete.destino}}</strong>'+
+                                        '</span>'+
+                                    '</div>'+
+                                    '<div class="col-lg-4">'+
+                                        '<span>'+
+                                            'Produto: {{frete.produto}}'+
+                                        '</span>'+
+                                        '<span>'+
+                                            'Espécie: {{frete.especie}}'+
+                                        '</span>'+
+                                    '</div>'+
+                                    '<div class="col-lg-4">'+
+                                        '<span>'+
+                                            'Veículo: {{frete.veiculo}}'+
+                                        '</span>'+
+                                        '<span>'+
+                                            'Preço: {{frete.preco}}'+
+                                        '</span>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="col-lg-2 logo-emp">'+
+                            '</div>'+
+                            '<div class="col-lg-12 frete-obs">'+
+                                '<div class="obs-texto">'+
+                                    '{{frete.obs}}'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'
+            })
+
+            var dataFretes = 'fretes.json';
+
+            var listafretes = new Vue({
+
+              el: '#listafretes',
+
+              data: {
+                listaDeFretes: []
+              },
+                ready: function () {
+                    console.log('aqui');
+                     // make sure you have vue-resource inlcued in your html head
+                     this.$http.get(dataFretes).then(function (response) {
+                        console.log(response);
+                       this.listaDeFretes = response.data // depends on the strcture of your response
+                   })
+                 },
+                // fetchData: function () {
+                //     var self = this;
+                //     self .$http.get( dataFretes, function( data ) {
+                //         self.items = data;
+                //         console.log(self.items);
+                //     });
+                // }
+            })
+
+
+        </script>
+    </body>
+</html>
